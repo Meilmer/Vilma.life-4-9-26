@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing UX design and illustration wor
 
 ## 🚀 Quick Start
 
-1. **Upload to GitHub:**
+1. **Upload to GitHub:** 
    - Create a new repository on GitHub
    - Upload all files from this folder to your repository
    - Enable GitHub Pages in repository settings
