@@ -9,21 +9,22 @@ window.addEventListener('load', function() {
 document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo(0, 0);
     
-    // Mobile Navigation Toggle
+    // Mobile nav toggle (only when hamburger + menu exist; homepage may hide both on small screens via CSS)
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
-    
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-    
-    // Close mobile menu when clicking on a link
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    }
+
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
         });
     });
     
