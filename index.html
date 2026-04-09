@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vilma - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+            }
+
+            .name-title {
+                font-size: clamp(2.2rem, 8vw, 3.2rem);
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.2rem;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+            }
+
+            .work-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 260px 200px 200px 200px 320px;
+                gap: 2rem;
+                margin: 4rem 0;
+            }
+
+            .work-item {
+                height: 320px;
+                margin-top: 0;
+                border-radius: 16px;
+            }
+
+            .work-item:nth-child(1) {
+                height: 260px;
+            }
+
+            .work-item:nth-child(2),
+            .work-item:nth-child(3) {
+                height: 200px;
+            }
+
+            .work-item.work-item-large {
+                height: 300px;
+            }
+
+            .work-item:nth-child(4) {
+                height: 200px;
+            }
+
+            .work-title-visible {
+                display: block;
+                position: static;
+                transform: none;
+                color: var(--text-primary);
+                font-family: var(--font-primary);
+                font-size: 1.3rem;
+                font-weight: 600;
+                text-shadow: none;
+                margin-top: 1.5rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            .work-overlay {
+                display: none;
+            }
+
+            .work-item:hover .work-title-visible {
+                opacity: 1;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                margin: 4rem 0;
+            }
+
+            .skill-category {
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .skill-items {
+                justify-content: center;
+                gap: 0.8rem;
+            }
+
+            .timeline {
+                padding: 0 1.5rem;
+                margin: 2.5rem 0;
+            }
+
+            .timeline-item {
+                margin-bottom: 1.5rem;
+            }
+
+            .timeline-content {
+                padding: 1.35rem 1.5rem;
+                border-radius: 12px;
+            }
+
+            .job-header {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+                gap: 0.45rem;
+                margin-bottom: 1rem;
+            }
+
+            .job-title {
+                font-size: 1.2rem;
+                line-height: 1.3;
+            }
+
+            .job-company {
+                font-size: 1rem;
+                color: var(--text-secondary);
+            }
+
+            .job-highlights {
+                flex-wrap: wrap;
+                gap: 0.6rem;
+                margin-top: 1rem;
+            }
+
+            .highlight {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+                border-radius: 20px;
+            }
+
+            .project-navigation {
+                padding: 4rem 0;
+                margin: 4rem 0;
+            }
+
+            .project-nav-title {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+            .project-nav-grid {
+                gap: 1.5rem;
+                justify-content: center;
+            }
+
+            .project-nav-item {
+                padding: 1rem 1.5rem;
+                font-size: 0.9rem;
+                border-radius: 8px;
+            }
+
+            .nav-item-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .name-title {
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .project-nav-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .project-nav-item {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                padding: 1.2rem 1.5rem;
+            }
+
+            .work-grid {
+                gap: 1.5rem;
+                margin: 3rem 0;
+            }
+
+            .work-item {
+                height: 300px;
+            }
+
+            .work-item:nth-child(1) {
+                height: 260px;
+            }
+
+            .work-item:nth-child(2),
+            .work-item:nth-child(3),
+            .work-item:nth-child(4) {
+                height: 200px;
+            }
+
+            .timeline {
+                padding: 0 1rem;
+            }
+
+            .timeline-content {
+                padding: 1.25rem 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Vilma</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#work-history" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="title-line name-title">Hi, I'm Vilma</span>
+                        <span class="title-line accent">UX Designer & Illustrator</span>
+                    </h1>
+                    <p class="hero-description">
+                        I create digital experiences that balance creativity with user-centered design, 
+                        transforming complex problems into intuitive solutions.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#work" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <div class="frog-background">
+                            <div class="color-blend blend-1"></div>
+                            <div class="color-blend blend-2"></div>
+                            <div class="color-blend blend-3"></div>
+                        </div>
+                        <img src="frog_for_curor.png" alt="Frog Illustration" class="hero-illustration" id="frog-illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-photo-container">
+                        <div class="photo-frame" aria-hidden="true"></div>
+                        <img src="about-photo.jpg" alt="Vilma - UX Designer & Illustrator" class="about-photo">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-description">
+                        I'm a passionate UX designer and illustrator who bridges the gap between 
+                        beautiful aesthetics and user-centered functionality. My approach combines 
+                        strategic thinking with creative execution, always keeping the user at the center.
+                    </p>
+                    <p class="about-description">
+                        With over 5 years of customer service experience, I bring deep empathy 
+                        and user advocacy to every project. I'm AI-forward, leveraging cutting-edge 
+                        tools to enhance design workflows and create innovative solutions.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="work">
+        <div class="work-container">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="work-grid">
+                <!-- E.I. Games Game Builder - Featured -->
+        <div class="work-item">
+            <a href="ei-games-game-builder.html" class="work-link-full">
+                        <div class="work-image">
+                            <img src="e_i_banner-04.png" alt="E.I. Project — three tablets: folder library with E.I. Project, History 400 course, and question editor" class="work-img" fetchpriority="high" decoding="async">
+                            <h3 class="work-title-visible">E.I. Games · Game Builder</h3>
+                            <div class="work-overlay">
+                                <h3 class="work-title">E.I. Games · Game Builder</h3>
+                                <div class="work-tags">
+                                    <span class="tag">UX / UI</span>
+                                    <span class="tag">EdTech</span>
+                                    <span class="tag">Product design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Mobile App Logos - Left Column -->
+        <div class="work-item">
+            <a href="mobile-app-logos.html" class="work-link-full">
+                        <div class="work-image">
+                            <img src="App icons banner.png" alt="Mobile App Logos Collection" class="work-img">
+                            <h3 class="work-title-visible">Loyal App Redesigns</h3>
+                            <div class="work-overlay">
+                                <h3 class="work-title">Loyal App Redesigns</h3>
+                                <div class="work-tags">
+                                    <span class="tag">Logo Design</span>
+                                    <span class="tag">Brand Identity</span>
+                                    <span class="tag">Mobile Apps</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Commission Illustrations - Top Right -->
+        <div class="work-item">
+            <a href="commission-illustrations.html" class="work-link-full">
+                        <div class="work-image">
+                            <img src="comission design banner.png" alt="Commission Illustrations" class="work-img">
+                            <h3 class="work-title-visible">Freelance</h3>
+                            <div class="work-overlay">
+                                <h3 class="work-title">Freelance</h3>
+                                <div class="work-tags">
+                                    <span class="tag">Illustration</span>
+                                    <span class="tag">Client Work</span>
+                                    <span class="tag">Social Media</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Fashion Design - Stacked Below Commission -->
+        <div class="work-item">
+            <a href="personal-work.html" class="work-link-full">
+                        <div class="work-image">
+                            <img src="fashion design banner new.png" alt="Fashion Design" class="work-img">
+                            <h3 class="work-title-visible">Fashion Design</h3>
+                            <div class="work-overlay">
+                                <h3 class="work-title">Fashion Design</h3>
+                                <div class="work-tags">
+                                    <span class="tag">Fashion</span>
+                                    <span class="tag">Sketching</span>
+                                    <span class="tag">Creative</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Scaly Music App -->
+        <div class="work-item work-item-large">
+            <a href="scaly-music-app.html" class="work-link-full">
+                        <div class="work-image">
+                            <img src="music project banner.png" alt="Scaly Music App" class="work-img" decoding="async">
+                            <h3 class="work-title-visible">Scaly Music App</h3>
+                            <div class="work-overlay">
+                                <h3 class="work-title">Scaly Music App</h3>
+                                <div class="work-tags">
+                                    <span class="tag">UX Design</span>
+                                    <span class="tag">Music Education</span>
+                                    <span class="tag">Mobile App</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <p class="work-subtitle">Check out more of my work on <a href="https://www.figma.com/design/4xMJXX2lDwUTSmAfzx9rxB/Vilma-Figma-Portfolio?node-id=1-56694&t=NnYY9jGuqxiaJ5Eg-1" target="_blank" class="figma-link">Figma →</a></p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="skills-container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-title">Design & UX</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Problem Solver</span>
+                        <span class="skill-item">Excellent Communicator</span>
+                        <span class="skill-item">Layout and Typography</span>
+                        <span class="skill-item">Ideation</span>
+                        <span class="skill-item">User Experience Design</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Software & Tools</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Photoshop</span>
+                        <span class="skill-item">Illustrator</span>
+                        <span class="skill-item">After Effects</span>
+                        <span class="skill-item">Figma</span>
+                        <span class="skill-item">GitHub</span>
+                        <span class="skill-item">Cursor</span>
+                        <span class="skill-item">ChatGPT</span>
+                        <span class="skill-item">Zendesk</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-title">Research & Analysis</h3>
+                    <div class="skill-items">
+                        <span class="skill-item">Survey Monkey</span>
+                        <span class="skill-item">User Research</span>
+                        <span class="skill-item">RStudio</span>
+                        <span class="skill-item">SPSS</span>
+                        <span class="skill-item">Community Management</span>
+                        <span class="skill-item">Brand Guidelines</span>
+                        <span class="skill-item">Wireframing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work History Section -->
+    <section id="work-history" class="work-history">
+        <div class="work-history-container">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="work-history-subtitle">Here's what I've been up to in design and community work. Each role expands—click the card or the arrow for the full story.</p>
+            
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item freelance" data-year="2025">
+                    <div class="timeline-marker">
+                        <div class="marker-dot freelance-dot"></div>
+                        <div class="marker-year">2025</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Game Builder App Redesign</h3>
+                            <span class="job-company">E.I Games</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I worked on remaking their game builder app that helps teachers make gamified learning experiences. I redesigned the interface to make it more intuitive and user-friendly for educators.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">App Redesign</span>
+                                <span class="highlight">Gamified Learning</span>
+                                <span class="highlight">UI/UX Design</span>
+                                <span class="highlight">Education Technology</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item freelance" data-year="2025">
+                    <div class="timeline-marker">
+                        <div class="marker-dot freelance-dot"></div>
+                        <div class="marker-year">2025</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Music Learning App Design</h3>
+                            <span class="job-company">Scaly</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I designed a music learning app that makes practicing scales actually fun. I created user personas, mapped out how people would use the app, built all the screens, and put together a design system. Worked closely with the client to get everything just right.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Mobile App Design</span>
+                                <span class="highlight">User Research</span>
+                                <span class="highlight">UI Design</span>
+                                <span class="highlight">Figma</span>
+                                <span class="highlight">Client Collaboration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2024-Current">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-year">2024-Current</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Fill-In Manager & Restaurant Operations</h3>
+                            <span class="job-company">Brigantine Restaurants</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-overview">
+                            <p>Started as a host, moved to expo, and got promoted to fill-in manager in just one year.</p>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I started as a host at a busy beachside restaurant, moved to expo, and got promoted to fill-in manager after just one year. Now I help out as fill-in manager while still doing hosting when needed. It's taught me a lot about working fast and staying flexible.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Fill-In Manager</span>
+                                <span class="highlight">Rapid Promotion</span>
+                                <span class="highlight">Host Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item freelance" data-year="2023">
+                    <div class="timeline-marker">
+                        <div class="marker-dot freelance-dot"></div>
+                        <div class="marker-year">2023</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">App Icons & Brand Logos</h3>
+                            <span class="job-company">Loyal</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I created over 200 app icon concepts for Loyal. I started with hand-drawn sketches, then refined them in black and white, and finally added color variations. The final designs were ready to go live on the App Store.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">App Icon Design</span>
+                                <span class="highlight">Brand Identity</span>
+                                <span class="highlight">Figma</span>
+                                <span class="highlight">Procreate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2022-2024">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-year">2022-2024</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Visual Designer</h3>
+                            <span class="job-company">Live Current Media</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-overview">
+                            <p>Built a new design system, improved the UI, and tested everything for the dev team.</p>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I built a new design system from scratch, improved the UI, and tested everything for the development team. I also made marketing materials and worked as an internal designer under two really experienced UX managers who taught me a lot.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Design System</span>
+                                <span class="highlight">UI Refinement</span>
+                                <span class="highlight">QA Testing</span>
+                                <span class="highlight">Marketing Materials</span>
+                                <span class="highlight">Internal Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2022">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-year">2022</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Community Manager</h3>
+                            <span class="job-company">Kast</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-overview">
+                            <p>Managed the community on social media, Discord, and newsletters.</p>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I managed community engagement and created communications for product launches. I also designed surveys to get insights from the community.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Community Management</span>
+                                <span class="highlight">Product Launches</span>
+                                <span class="highlight">Survey Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item freelance" data-year="2022">
+                    <div class="timeline-marker">
+                        <div class="marker-dot freelance-dot"></div>
+                        <div class="marker-year">2022</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Website Illustrations</h3>
+                            <span class="job-company">Moves The Needle</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I created custom illustrations and animations for Moves The Needle's website.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Custom Illustrations</span>
+                                <span class="highlight">Animations</span>
+                                <span class="highlight">Figma</span>
+                                <span class="highlight">Procreate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item freelance" data-year="2021">
+                    <div class="timeline-marker">
+                        <div class="marker-dot freelance-dot"></div>
+                        <div class="marker-year">2021</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Album Cover Design</h3>
+                            <span class="job-company">Bene</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I designed album cover artwork for musician Bene.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Album Artwork</span>
+                                <span class="highlight">Visual Identity</span>
+                                <span class="highlight">Procreate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-year="2020-2021">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                        <div class="marker-year">2020-2021</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Print and Marketing Associate</h3>
+                            <span class="job-company">Staples</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-overview">
+                            <p>Created print designs and improved client files using Adobe Creative Suite.</p>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I worked with clients to create print designs and made sure their files looked great when printed. I also kept the commercial printers running smoothly.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Print Design</span>
+                                <span class="highlight">Adobe Creative Suite</span>
+                                <span class="highlight">File Enhancement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item freelance" data-year="2020">
+                    <div class="timeline-marker">
+                        <div class="marker-dot freelance-dot"></div>
+                        <div class="marker-year">2020</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Fashion Marketing Illustrations</h3>
+                            <span class="job-company">Feature</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I created fashion marketing illustrations for Feature.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Fashion Marketing</span>
+                                <span class="highlight">Brand Identity</span>
+                                <span class="highlight">Procreate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item freelance" data-year="2017-2018">
+                    <div class="timeline-marker">
+                        <div class="marker-dot freelance-dot"></div>
+                        <div class="marker-year">2017-2018</div>
+                    </div>
+                    <div class="timeline-content" onclick="toggleTimelineItem(this)">
+                        <div class="job-header">
+                            <h3 class="job-title">Book Illustrations</h3>
+                            <span class="job-company">Plum Pantry</span>
+                            <span class="expand-icon" aria-hidden="true"></span>
+                        </div>
+                        <div class="job-details expanded-content">
+                            <p class="job-description">I created book illustrations for Plum Pantry.</p>
+                            <div class="job-highlights">
+                                <span class="highlight">Book Illustration</span>
+                                <span class="highlight">Visual Narratives</span>
+                                <span class="highlight">Procreate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="education-container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-degree">Associates in Illustration</h3>
+                        <span class="education-year">May 2022</span>
+                    </div>
+                    <p class="education-school">Palomar College, San Diego, CA</p>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-degree">BS Human Systems Engineering</h3>
+                        <span class="education-year">Dec. 2026</span>
+                    </div>
+                    <p class="education-school">Arizona State University (Current Studies)</p>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="education-degree">Additional Training</h3>
+                        <span class="education-year">2022-2023</span>
+                    </div>
+                    <p class="education-school">CGMA: Analytical Figure Drawing, Brainstorm Online: Perspective Bootcamp & Form Language</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h2 class="section-title">Let's Work Together</h2>
+                    <p class="contact-description">
+                        Got a project in mind? I'd love to hear about it! I'm always excited 
+                        to work on new things and meet cool people.
+                    </p>
+                </div>
+                <div class="contact-right">
+                    <div class="contact-info">
+                        <div class="contact-email-wrap">
+                            <a href="mailto:vilmamariainkeri@gmail.com" class="contact-item" id="contact-email-copy" data-email="vilmamariainkeri@gmail.com" title="Click to copy email" aria-label="Copy email address to clipboard">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">vilmamariainkeri@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/Vilma-M-Koivisto" target="_blank" class="social-btn linkedin-btn">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>Connect on LinkedIn</span>
+                        </a>
+                        <a href="https://www.figma.com/design/4xMJXX2lDwUTSmAfzx9rxB/Vilma-Figma-Portfolio?node-id=1-56694&t=NnYY9jGuqxiaJ5Eg-1" target="_blank" class="social-btn figma-btn">
+                            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 12c0-3.012 2.467-5.45 5.5-5.45s5.5 2.438 5.5 5.45-2.467 5.45-5.5 5.45S12 15.012 12 12zM6.5 6.55C3.467 6.55 1 8.988 1 12s2.467 5.45 5.5 5.45S12 15.012 12 12 9.533 6.55 6.5 6.55zM6.5 17.45c-3.033 0-5.5-2.438-5.5-5.45s2.467-5.45 5.5-5.45S12 8.988 12 12s-2.467 5.45-5.5 5.45z"/>
+                            </svg>
+                            <span>View Figma Portfolio</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Vilma. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

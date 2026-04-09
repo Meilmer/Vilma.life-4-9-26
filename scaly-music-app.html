@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaly - Music Learning App - Vilma Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Google Sans Code';
+            src: url('Google_Fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Google Sans Code';
+            src: url('Google_Fonts/GoogleSansCode-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+        }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem 0;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .hero h1 {
+            font-family: var(--font-primary);
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 820px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .meta-item {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            max-width: none;
+        }
+
+        .gallery-caption h3 {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-caption p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* User Flow Section */
+        .user-flow-section,
+        .ideation-sketches-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .ideation-sketches-section {
+            color-scheme: light;
+        }
+
+        .ideation-sketches-mat {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: clamp(1rem, 3vw, 2rem);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .ideation-sketches-row {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(0.65rem, 1.5vw, 1.25rem);
+            align-items: stretch;
+        }
+
+        .ideation-sketches-card {
+            margin: 0;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            background: transparent;
+        }
+
+        .ideation-sketches-card .ideation-sketches-image {
+            width: 100%;
+            height: auto;
+            flex: 1;
+            object-fit: contain;
+            object-position: top center;
+        }
+
+        .user-flow-section h2,
+        .ideation-sketches-section h2 {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Wider measure for section intros (practice block excluded) */
+        .user-flow-section .section-description,
+        .user-profiles .section-description,
+        .ideation-sketches-section .section-description,
+        .user-screens-section .section-description {
+            max-width: 760px;
+        }
+
+        .user-profiles h2 {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .user-profiles .section-description {
+            margin-bottom: 3rem;
+        }
+
+        .user-flow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .ideation-sketches-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Practice screen: design process (core learning UI) */
+        .practice-process-section {
+            padding: 4rem 0 4.5rem;
+            background: linear-gradient(180deg, #F5F0E7 0%, #EDE6DC 100%);
+            border-top: 1px solid rgba(52, 89, 61, 0.1);
+            border-bottom: 1px solid rgba(52, 89, 61, 0.08);
+            color-scheme: light;
+        }
+
+        .practice-process-section h2 {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .practice-process-lead {
+            max-width: 720px;
+        }
+
+        .practice-process-list {
+            list-style: none;
+            margin: 2.5rem 0 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1180px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .practice-process-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: clamp(1.25rem, 3vw, 2.25rem);
+            align-items: start;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(224, 209, 183, 0.65);
+            border-radius: 16px;
+            padding: 1.5rem 1.75rem 1.75rem;
+            box-shadow: 0 4px 20px rgba(52, 89, 61, 0.06);
+        }
+
+        .practice-step-copy {
+            min-width: 0;
+        }
+
+        .practice-step-media {
+            min-width: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            align-self: center;
+            padding-right: clamp(0.5rem, 1.5vw, 1.25rem);
+            padding-left: clamp(0.15rem, 0.5vw, 0.35rem);
+        }
+
+        .practice-step-top {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem 1.25rem;
+            align-items: start;
+            margin-bottom: 0;
+        }
+
+        .practice-step-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .practice-step-title {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 0.9rem;
+        }
+
+        .practice-step-text {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .practice-step-figure {
+            margin: 0;
+            text-align: right;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .practice-step-image {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 0 0 0 auto;
+            border-radius: 12px;
+            object-fit: contain;
+            background: transparent;
+        }
+
+        .practice-step-image--larger {
+            max-width: 428px;
+        }
+
+        .practice-step-media--compact {
+            padding-right: 0.15rem;
+            padding-left: 0;
+        }
+
+        .practice-step-placeholder {
+            width: 100%;
+            max-width: 400px;
+            min-height: 200px;
+            margin: 0 0 0 auto;
+            border: 2px dashed rgba(52, 89, 61, 0.22);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            background: rgba(255, 255, 255, 0.45);
+        }
+
+        .user-flow-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .ideation-sketches-image {
+            display: block;
+            border-radius: 10px;
+            background: transparent;
+        }
+
+        /* User Profiles Section */
+        .user-profiles {
+            padding: 4rem 0;
+        }
+
+        /* User Screens Section */
+        .user-screens-section {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+
+        .user-screens-section h2 {
+            font-family: var(--font-primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .user-screens-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .user-screens-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-image-container {
+            max-width: 100%;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+
+        /* Details Section */
+        .details-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .details-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .details-content p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .process-steps li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .process-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        .process-steps li:last-child {
+            border-bottom: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .user-flow-section h2,
+            .practice-process-section h2 {
+                font-size: 2rem;
+            }
+
+            .user-screens-section h2 {
+                font-size: 2rem;
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .profile-image {
+                border-radius: 8px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .details-grid .details-content:nth-child(1) {
+                order: 2;
+            }
+
+            .details-grid .details-content:nth-child(2) {
+                order: 1;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+                margin: 3rem 0;
+            }
+
+            .meta-item {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 12px;
+            }
+
+            .user-screens-container,
+            .user-flow-container {
+                padding: 0;
+                margin: 2rem 0;
+            }
+
+            .ideation-sketches-container {
+                padding: 0;
+                margin: 2rem 0;
+            }
+
+            .practice-process-card {
+                grid-template-columns: 1fr;
+                padding: 1.25rem 1.25rem 1.5rem;
+            }
+
+            .practice-step-media {
+                justify-content: center;
+                order: 2;
+                padding-right: 0;
+                padding-left: 0;
+            }
+
+            .practice-step-copy {
+                order: 1;
+            }
+
+            .practice-step-figure {
+                text-align: center;
+            }
+
+            .practice-step-image {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .practice-step-placeholder {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .practice-step-top {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .practice-step-badge {
+                justify-self: start;
+            }
+
+            .user-screens-image,
+            .user-flow-image {
+                border-radius: 12px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .ideation-sketches-mat {
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .ideation-sketches-image {
+                box-shadow: none;
+            }
+
+            .ideation-sketches-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .section-description {
+                font-size: 1.1rem;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+                padding: 0 1rem;
+            }
+
+            .details-section {
+                padding: 4rem 0;
+            }
+
+            .details-content {
+                padding: 2rem 1rem;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 16px;
+                margin-bottom: 2rem;
+            }
+
+            .details-content h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+                color: var(--text-primary);
+            }
+
+            .details-content p {
+                font-size: 1.1rem;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+            }
+
+            .process-steps li {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+                padding-left: 2rem;
+            }
+
+            .project-navigation {
+                padding: 4rem 0;
+                margin: 4rem 0;
+            }
+
+            .project-nav-title {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+            }
+
+            .project-nav-grid {
+                gap: 1.5rem;
+                justify-content: center;
+            }
+
+            .project-nav-item {
+                padding: 1rem 1.5rem;
+                font-size: 0.9rem;
+                border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .user-screens-section h2,
+            .user-flow-section h2,
+            .ideation-sketches-section h2,
+            .practice-process-section h2,
+            .user-profiles h2 {
+                font-size: 1.8rem;
+            }
+
+            .ideation-sketches-row {
+                grid-template-columns: 1fr;
+            }
+
+            .details-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .project-nav-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .project-nav-item {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                padding: 1.2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Vilma</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Scaly</h1>
+            <p>A music learning app that makes practicing scales actually fun. I designed it to be visual and interactive, so both students and teachers can easily master the basics of music.</p>
+            <p class="work-subtitle" style="font-size: 0.9rem;">View full project on <a href="https://www.figma.com/design/Jy1pbJYT9X0Aa1dCpMkz8k/Music-App-Project?node-id=147-8896&t=qEap0MsQabgxYX1k-1" target="_blank" class="figma-link" rel="noopener noreferrer">Figma →</a></p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Category</div>
+                    <div class="meta-value">Mobile App Design</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Year</div>
+                    <div class="meta-value">2025</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tools</div>
+                    <div class="meta-value">Figma, User Research</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Flow Section -->
+    <section class="user-flow-section">
+        <div class="container">
+            <h2>Mapping out flow</h2>
+            <p class="section-description">This diagram is not the final shipped flow. Because we were building the app from scratch, I used it as a shared map of how the experience should hang together so we could spot gaps early and fold in screens or steps that still needed to exist. We iterated on it four times as the product took shape.</p>
+            <div class="user-flow-container">
+                <img src="user flow scaly.jpg" alt="Scaly user flow diagram used during discovery to map journeys and align the team across iterations" class="user-flow-image" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </section>
+
+    <!-- User Profiles Section -->
+    <section class="user-profiles">
+        <div class="container">
+            <h2>Personas</h2>
+            <p class="section-description">These are not portraits of real people. They are synthesized personas I used to empathize with who we were designing for while the project moved forward. I spoke with our team to understand the client and their learners, paired that with some light research, and turned it into two clear archetypes we could keep coming back to.</p>
+            <div class="profiles-grid">
+                <div class="profile-image-container">
+                    <img src="UX Persona 1.png" alt="Scaly persona one: synthesized archetype for design alignment (not a real individual)" class="profile-image">
+                </div>
+                <div class="profile-image-container">
+                    <img src="UX Persona 2.png" alt="Scaly persona two: synthesized archetype for design alignment (not a real individual)" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ideation sketches (first iteration) -->
+    <section class="ideation-sketches-section" aria-labelledby="ideation-sketches-heading">
+        <div class="container">
+            <h2 id="ideation-sketches-heading">Ideation sketches</h2>
+            <p class="section-description">First-pass landscape mobile concepts for octave, range, key, instrument, and scale pattern flows—quick paper-style explorations to shape the direction before higher-fidelity screens.</p>
+            <div class="ideation-sketches-container">
+                <div class="ideation-sketches-mat">
+                    <div class="ideation-sketches-row">
+                        <figure class="ideation-sketches-card">
+                            <img src="octive.png" alt="Ideation sketches: choose your octave—three landscape phone concepts" class="ideation-sketches-image" loading="lazy" decoding="async">
+                        </figure>
+                        <figure class="ideation-sketches-card">
+                            <img src="key.png" alt="Ideation sketches: choose your range and key—staff, circle of fifths, and oval key picker" class="ideation-sketches-image" loading="lazy" decoding="async">
+                        </figure>
+                        <figure class="ideation-sketches-card">
+                            <img src="key-2.png" alt="Ideation sketches: choose your instrument—image tiles and clarinet options" class="ideation-sketches-image" loading="lazy" decoding="async">
+                        </figure>
+                        <figure class="ideation-sketches-card">
+                            <img src="scale pattern.png" alt="Ideation sketches: choose your scale pattern—three scrolling staff concepts" class="ideation-sketches-image" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice screen: design process (core learning UI: scales + confidence) -->
+    <section class="practice-process-section" aria-labelledby="practice-process-heading">
+        <div class="container">
+            <h2 id="practice-process-heading">Designing the practice screen</h2>
+            <p class="section-description practice-process-lead">This is the screen where students see the scale they are working on and mark how challenging it felt. I built it in four passes. Each pass fixed something the last one had not solved yet, so you can follow the reasoning from structure to final edge cases.</p>
+            <ol class="practice-process-list">
+                <li class="practice-process-card">
+                    <div class="practice-step-copy">
+                        <div class="practice-step-top">
+                            <span class="practice-step-badge" aria-hidden="true">1</span>
+                            <div>
+                                <h3 class="practice-step-title">Lo-fi layout map</h3>
+                                <p class="practice-step-text">I started with a simple landscape wireframe and bounding boxes. I needed to agree on where the staff, the main actions, and the rating row would sit before any visual design. This step did not decide how settings would behave. It only locked the skeleton so later iterations were not fighting a moving layout.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="practice-step-media">
+                        <figure class="practice-step-figure">
+                            <img src="scaly-1.png" alt="Two landscape phone wireframes with X-marked bounding boxes mapping placeholder regions for UI assets" class="practice-step-image" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                </li>
+                <li class="practice-process-card">
+                    <div class="practice-step-copy">
+                        <div class="practice-step-top">
+                            <span class="practice-step-badge" aria-hidden="true">2</span>
+                            <div>
+                                <h3 class="practice-step-title">Settings pop-up</h3>
+                                <p class="practice-step-text">Once the map was set, the open question was where secondary controls should go. Putting every option on the main canvas felt crowded, so I tried grouping metronome, drone, notation, and octave behind a gear icon in a pop-up. The center of the screen stayed about the staff and the Again through Easy buttons, with metro and drone still quick to reach on the side. That kept the first layout honest, but it introduced a new problem for the next step.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="practice-step-media">
+                        <figure class="practice-step-figure">
+                            <img src="scaly-2.png" alt="Landscape wireframes: practice screen with staff, metro and drone toggles, and Again through Easy rating buttons; arrow to second frame showing a centered settings modal with metronome, drone, and notation toggles plus Octave 1 through 3 choices" class="practice-step-image" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                </li>
+                <li class="practice-process-card">
+                    <div class="practice-step-copy">
+                        <div class="practice-step-top">
+                            <span class="practice-step-badge" aria-hidden="true">3</span>
+                            <div>
+                                <h3 class="practice-step-title">Hi-fi: one screen, icon controls</h3>
+                                <p class="practice-step-text">The pop-up reduced clutter, but it added friction. Students had to leave the practice surface to change tools, which did not feel right while they were playing. I removed the modal and placed notation, metronome, and drone on the same screen as round icon buttons so everything stays one tap away. Custom icons replaced long labels so the view stayed quiet. Beside the phone I tested two inactive styles: a red strike-through versus a softer grayed-out state.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="practice-step-media practice-step-media--compact">
+                        <figure class="practice-step-figure">
+                            <img src="scaly-3.png" alt="Landscape hi-fi mockup: practice screen with staff, Again through Easy rating buttons, and three utility icons for notation, metronome, and drone; beside the phone, columns comparing active state with two inactive treatments: red diagonal strike versus grayed-out icons" class="practice-step-image practice-step-image--larger" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                </li>
+                <li class="practice-process-card">
+                    <div class="practice-step-copy">
+                        <div class="practice-step-top">
+                            <span class="practice-step-badge" aria-hidden="true">4</span>
+                            <div>
+                                <h3 class="practice-step-title">Legibility: longest scale &amp; notation off</h3>
+                                <p class="practice-step-text">The one-screen hi-fi layout looked balanced for a typical example, but I still had to stress-test real music. I drew the longest scale we would reasonably show to confirm the notation stays readable in landscape with the new icons and buttons. Then I designed notation off: a lighter panel with start note, key, octave, and a short rhythm strip. That way students who hide the full score still know what they are practicing.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="practice-step-media">
+                        <figure class="practice-step-figure">
+                            <img src="scaly-4.png" alt="Two landscape mockups: top shows dense full notation for a long scale with sidebar Note, Metro, Drone and Again through Easy ratings; bottom shows notation off with modular start note, key, octave, and rhythm summary in the main area" class="practice-step-image" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- User Screens Section -->
+    <section class="user-screens-section">
+        <div class="container">
+            <h2>Final screens in color</h2>
+            <p class="section-description">This is not every screen in the app. It is a curated set of high-fidelity, full-color frames so you can see how the UI looks once illustration, palette, and components come together on a few key flows.</p>
+            <div class="user-screens-container">
+                <img src="scaly user screen.png" alt="Selected Scaly app screens shown in final full-color UI" class="user-screens-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="details-section">
+        <div class="container">
+            <div class="details-grid">
+                <div class="details-content">
+                    <h3>Design Process</h3>
+                    <ul class="process-steps">
+                        <li>Synthesized personas (not real people) from team conversations about the client and light research.</li>
+                        <li>Mapped the journey in a flow diagram over four iterations to align early and catch gaps; it was not the final shipped flow.</li>
+                        <li>Sketched landscape concepts for octave, key, instrument, and pattern flows before hi-fi.</li>
+                        <li>Focused hardest on the practice screen: lo-fi layout, settings modal tryout, then one-screen icon controls, states, and stress tests for long scales and notation off.</li>
+                        <li>Captured a subset of screens in full color for the case study, not the entire product.</li>
+                        <li>Refined flows, copy, and layout in Figma with the client and team.</li>
+                    </ul>
+                </div>
+                
+                <div class="details-content">
+                    <h3>Project Overview</h3>
+                    <p>Scaly helps students practice scales in landscape with notation, simple practice tools, and a quick way to mark how hard a run felt. I designed it from scratch with the client’s team, not as a reskin of something that already existed.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Readable staff notation (or a lighter summary when notation is off), optional metronome and drone, and Again-through-Easy confidence marks. Built to stay legible for dense music on a phone in landscape.</p>
+                    
+                    <h3>Client Collaboration</h3>
+                    <p>Regular syncs with our team and the client kept the flow map and practice experience honest as scope shifted across those four passes.</p>
+                    
+                    <h3>Technical Approach</h3>
+                    <p>Clear hierarchy, brand-aligned color and illustration, and reusable Figma components so patterns stayed consistent. I kept accessibility and touch targets in mind for short practice sessions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="project-nav-container">
+            <h3 class="project-nav-title">Explore More Projects</h3>
+            <div class="project-nav-grid">
+                <a href="index.html" class="project-nav-item home-nav">
+                    <span class="nav-item-text">Home</span>
+                </a>
+            </div>
+            <div class="project-nav-grid">
+                <a href="ei-games-game-builder.html" class="project-nav-item">
+                    <span class="nav-item-text">E.I. Games Builder</span>
+                </a>
+                <a href="mobile-app-logos.html" class="project-nav-item">
+                    <span class="nav-item-text">Mobile App Logos</span>
+                </a>
+                <a href="commission-illustrations.html" class="project-nav-item">
+                    <span class="nav-item-text">Commission Illustrations</span>
+                </a>
+                <a href="personal-work.html" class="project-nav-item">
+                    <span class="nav-item-text">Fashion Design</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Vilma. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
