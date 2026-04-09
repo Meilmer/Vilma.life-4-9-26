@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Design - Vilma Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Google Sans Code';
+            src: url('Google_Fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Google Sans Code';
+            src: url('Google_Fonts/GoogleSansCode-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+        }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem 0;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .hero h1 {
+            font-family: var(--font-primary);
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .meta-item {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .gallery-caption h3 {
+            font-family: var(--font-primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-caption p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+        }
+
+        .gallery-item.portrait {
+            grid-row: span 2;
+        }
+
+        /* Ensure no gaps by using dense packing */
+        .gallery {
+            grid-auto-flow: dense;
+        }
+
+        /* Details Section */
+        .details-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .details-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .details-content p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .process-steps li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .process-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        .process-steps li:last-child {
+            border-bottom: none;
+        }
+
+        /* Navigation Section */
+        .navigation-section {
+            padding: 4rem 0;
+            background: #ffffff;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .nav-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nav-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .nav-content p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-btn.primary {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+        }
+
+        .nav-btn.primary:hover {
+            background: #e55a2b;
+            border-color: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.secondary {
+            background: transparent;
+            color: #ff6b35;
+            border-color: #ff6b35;
+        }
+
+        .nav-btn.secondary:hover {
+            background: #ff6b35;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                grid-auto-rows: auto;
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+            }
+
+            .gallery-item.portrait {
+                grid-row: span 1;
+            }
+
+            .gallery-item {
+                padding: 2rem;
+                border-radius: 16px;
+                margin-bottom: 2rem;
+            }
+
+            /* Mobile styles for VilmaK collection internal grid */
+            .gallery-item.large div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            /* Ensure images in VilmaK collection are properly sized on mobile */
+            .gallery-item.large div[style*="grid-template-columns"] img {
+                width: 100% !important;
+                height: auto !important;
+                border-radius: 12px !important;
+            }
+
+            /* Adjust caption spacing on mobile */
+            .gallery-caption h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .gallery-caption p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .details-section {
+                padding: 4rem 0;
+            }
+
+            .details-content {
+                padding: 2rem 1rem;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 16px;
+                margin-bottom: 2rem;
+            }
+
+            .details-content h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+                color: var(--text-primary);
+            }
+
+            .details-content p {
+                font-size: 1.1rem;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                line-height: 1.7;
+                margin-bottom: 2rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+                margin: 3rem 0;
+            }
+
+            .meta-item {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 12px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                padding: 1.2rem 2rem;
+            }
+
+            .nav-content h3 {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Vilma</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Fashion Design</h1>
+            <p>Creative explorations and fashion design projects that show my artistic growth, experimental techniques, and passion for design work.</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Category</div>
+                    <div class="meta-value">Fashion Design</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Year</div>
+                    <div class="meta-value">2022-2024</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tools</div>
+                    <div class="meta-value">Various Media</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery">
+                <!-- School Work Collection -->
+                <div class="gallery-item large">
+                    <img src="school work-smaller.jpg" alt="School Work Collection" loading="eager" decoding="async" width="600" height="800">
+                    <div class="gallery-caption">
+                        <h3>School Work Collection</h3>
+                        <p>School projects and art studies including figure drawing, portrait studies, and gesture work from my assignments</p>
+                    </div>
+                </div>
+                
+                <!-- VilmaK Character Collection -->
+                <div class="gallery-item large">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="VilmaK_Sketch.jpg" alt="VilmaK Character Sketch" loading="lazy" decoding="async" width="400" height="600" style="width: 100%; height: auto; border-radius: 8px;">
+                        <img src="VilmaK_character.jpg" alt="VilmaK Character Design" loading="lazy" decoding="async" width="400" height="600" style="width: 100%; height: auto; border-radius: 8px;">
+                        <img src="Vilma_K_week7_2of2.jpg" alt="VilmaK Week 7 Development" loading="lazy" decoding="async" width="400" height="600" style="width: 100%; height: auto; border-radius: 8px; grid-column: span 2;">
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>VilmaK Character Development</h3>
+                        <p>Character design progression from my first sketch through week 7 iterations, showing how the personality and visual style evolved</p>
+                    </div>
+                </div>
+                
+                <!-- Fashion Studies Collection -->
+                <div class="gallery-item large">
+                    <img src="studies.png" alt="Fashion Studies Collection" loading="eager" decoding="async" width="600" height="800">
+                    <div class="gallery-caption">
+                        <h3>Fashion Studies & Character Design</h3>
+                        <p>Personal fashion illustration projects and character design studies showing different styles, poses, and creative exploration</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="details-section">
+        <div class="container">
+            <div class="details-grid">
+                <div class="details-content">
+                    <h3>Personal & School Projects</h3>
+                    <p>This collection shows a range of creative work from personal explorations to school projects. From fashion illustrations to character design studies, these pieces show my artistic growth and technical skill development.</p>
+                    
+                    <h3>Creative Process</h3>
+                    <ul class="process-steps">
+                        <li>Research and gathering inspiration</li>
+                        <li>Initial sketches and developing concepts</li>
+                        <li>Character design and fashion illustration</li>
+                        <li>Exploring and refining color palettes</li>
+                        <li>Final rendering and presentation</li>
+                    </ul>
+                </div>
+                
+                <div class="details-content">
+                    <h3>Key Skills Demonstrated</h3>
+                    <p>These works show my skills in figure drawing, character design, fashion illustration, color theory, and digital art techniques. The collection shows my versatility across different artistic styles and mediums.</p>
+                    
+                    <h3>Artistic Development</h3>
+                    <p>From detailed character concept art to dynamic figure studies, these pieces show my journey of artistic exploration and skill building, combining traditional drawing techniques with modern digital tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="project-nav-container">
+            <h3 class="project-nav-title">Explore More Projects</h3>
+            <div class="project-nav-grid">
+                <a href="index.html" class="project-nav-item home-nav">
+                    <span class="nav-item-text">Home</span>
+                </a>
+            </div>
+            <div class="project-nav-grid">
+                <a href="scaly-music-app.html" class="project-nav-item">
+                    <span class="nav-item-text">Scaly Music App</span>
+                </a>
+                <a href="ei-games-game-builder.html" class="project-nav-item">
+                    <span class="nav-item-text">E.I. Games Builder</span>
+                </a>
+                <a href="mobile-app-logos.html" class="project-nav-item">
+                    <span class="nav-item-text">Mobile App Logos</span>
+                </a>
+                <a href="commission-illustrations.html" class="project-nav-item">
+                    <span class="nav-item-text">Commission Illustrations</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Vilma. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loyal App Redesigns - Vilma Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Google Sans Code';
+            src: url('Google_Fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Google Sans Code';
+            src: url('Google_Fonts/GoogleSansCode-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+        }
+    </style>
+    <style>
+        .project-hero {
+            padding: 4rem 0;
+            background: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .project-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem 0;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .hero h1 {
+            font-family: var(--font-primary);
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+        
+        .project-title {
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+        
+        .project-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .project-gallery {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 2rem 0;
+        }
+        
+        .phase-section {
+            margin-bottom: 6rem;
+        }
+        
+        .phase-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .phase-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            font-family: var(--font-primary);
+            line-height: 1;
+        }
+        
+        .phase-header h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            margin: 0;
+        }
+        
+        .phase-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sketches-grid,
+        .final-designs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .sketch-item,
+        .design-item {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .sketch-item:hover,
+        .design-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+        }
+        
+        .sketch-item img,
+        .design-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+        
+        .appstore-showcase {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .appstore-showcase:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+        }
+        
+        .appstore-showcase img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+        
+        .phase-description {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .phase-description p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .project-details {
+            background: var(--bg-secondary);
+            padding: 6rem 0;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+        
+        .details-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+        
+        .details-content p {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .process-steps {
+            list-style: none;
+            padding: 0;
+            counter-reset: step-counter;
+        }
+        
+        .process-steps li {
+            margin-bottom: 2.5rem;
+            padding-left: 3rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .process-steps li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: var(--font-primary);
+        }
+        
+        .process-steps li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .process-steps strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        
+        .back-link:hover {
+            color: var(--primary-color);
+            transform: translateX(-5px);
+        }
+        
+        .back-link::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .project-container {
+                padding: 0 2rem;
+            }
+            
+            .project-hero {
+                padding: 120px 0 80px;
+            }
+            
+            .project-header {
+                margin-bottom: 4rem;
+            }
+            
+            .project-gallery {
+                margin: 2rem auto;
+                padding: 1rem 0;
+            }
+            
+            .phase-section {
+                margin-bottom: 4rem;
+            }
+            
+            .phase-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .phase-number {
+                font-size: 2.5rem;
+            }
+            
+            .phase-header h3 {
+                font-size: 2rem;
+            }
+            
+            .sketches-grid,
+            .final-designs-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .sketch-item,
+            .design-item,
+            .appstore-showcase {
+                padding: 1.5rem;
+            }
+            
+            .phase-description {
+                padding: 1.5rem;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .project-details {
+                padding: 4rem 0;
+            }
+            
+            .project-meta {
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">VILMA</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Loyal App Redesigns</h1>
+            <p>A big collection of hand-drawn mobile app logo ideas covering everything from fitness apps to photo editing tools.</p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Category</div>
+                        <div class="meta-value">Brand Identity</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Year</div>
+                        <div class="meta-value">2024</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Tools</div>
+                        <div class="meta-value">Figma, Procreate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="project-gallery">
+        <div class="project-container">
+            <!-- Phase 1: Sketches -->
+            <div class="phase-section">
+                <div class="phase-header">
+                    <span class="phase-number">01</span>
+                    <h3>Initial Exploration</h3>
+                </div>
+                <div class="phase-content">
+                    <div class="sketches-grid">
+                        <div class="sketch-item">
+                            <img src="sketches-first.jpg" alt="Initial Hand-Drawn Logo Sketches">
+                        </div>
+                        <div class="sketch-item">
+                            <img src="sketches-second.jpg" alt="Refined Hand-Drawn Logo Sketches">
+                        </div>
+                    </div>
+                    <div class="phase-description">
+                        <p>Two rounds of logo sketches. The client picked the best ones to develop further.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2: Final Designs -->
+            <div class="phase-section">
+                <div class="phase-header">
+                    <span class="phase-number">02</span>
+                    <h3>Final Refinement</h3>
+                </div>
+                <div class="phase-content">
+                    <div class="final-designs-grid">
+                        <div class="design-item">
+                            <img src="mobile-app-logos-bw.jpg" alt="Black and White Mobile App Logos Collection">
+                        </div>
+                        <div class="design-item">
+                            <img src="mobile-app-logos-color.jpg" alt="Color Mobile App Logos Collection">
+                        </div>
+                    </div>
+                    <div class="phase-description">
+                        <p>Black and white versions to narrow down the designs. Then color variations for different app themes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3: App Store Frames -->
+            <div class="phase-section">
+                <div class="phase-header">
+                    <span class="phase-number">03</span>
+                    <h3>App Store Presentation</h3>
+                </div>
+                <div class="phase-content">
+                    <div class="appstore-showcase">
+                        <img src="loyal app frames.png" alt="Loyal App Store Frames">
+                    </div>
+                    <div class="phase-description">
+                        <p>Final logos shown how they'd look on the App Store, with the complete brand identity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="project-container">
+            <div class="details-grid">
+                <div class="details-content">
+                    <h3>Project Overview</h3>
+                    <p>
+                        This project shows my three-phase approach to designing mobile app logos for Loyal. 
+                        I started with lots of hand-drawn sketches, then refined them systematically 
+                        to create a complete brand identity system ready for the App Store.
+                    </p>
+                    <p>
+                        The final collection has over 200 unique logo concepts across different app categories, 
+                        from fitness apps to photo editing tools. It shows my range in typography, 
+                        iconography, and brand identity work.
+                    </p>
+                </div>
+                
+                <div class="details-content">
+                    <h3>Three-Phase Design Process</h3>
+                    <ol class="process-steps">
+                        <li>
+                            <strong>Phase 01: Initial Exploration</strong><br>
+                            I drew lots of sketches exploring different themes, typography styles, and visual approaches. The client reviewed everything and picked the best directions to develop further.
+                        </li>
+                        <li>
+                            <strong>Phase 02: Final Refinement</strong><br>
+                            I made black and white versions to narrow down the designs, focusing on form and composition. Then I created color variations for different app themes and brand identities.
+                        </li>
+                        <li>
+                            <strong>Phase 03: App Store Presentation</strong><br>
+                            I finalized the logos and showed them how they'd look in the App Store. This phase shows how the brand identity works in real-world use.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="project-nav-container">
+            <h3 class="project-nav-title">Explore More Projects</h3>
+            <div class="project-nav-grid">
+                <a href="index.html" class="project-nav-item home-nav">
+                    <span class="nav-item-text">Home</span>
+                </a>
+            </div>
+            <div class="project-nav-grid">
+                <a href="scaly-music-app.html" class="project-nav-item">
+                    <span class="nav-item-text">Scaly Music App</span>
+                </a>
+                <a href="ei-games-game-builder.html" class="project-nav-item">
+                    <span class="nav-item-text">E.I. Games Builder</span>
+                </a>
+                <a href="commission-illustrations.html" class="project-nav-item">
+                    <span class="nav-item-text">Commission Illustrations</span>
+                </a>
+                <a href="personal-work.html" class="project-nav-item">
+                    <span class="nav-item-text">Fashion Design</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Vilma. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

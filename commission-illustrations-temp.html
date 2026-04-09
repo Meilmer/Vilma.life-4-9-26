@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commission Illustrations - Vilma Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Google Sans Code';
+            src: url('Google_Fonts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Google Sans Code';
+            src: url('Google_Fonts/GoogleSansCode-Italic-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
+            font-style: italic;
+        }
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem 0;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .hero h1 {
+            font-family: var(--font-primary);
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--text-secondary);
+        }
+
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .meta-item {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item.featured {
+            grid-column: 1 / -1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .asu-characters-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .character-img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .character-img:hover {
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .asu-characters-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
+        .project-title-with-date {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .project-date {
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .result-link {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+        
+        .result-link:hover {
+            border-bottom: 1px solid #ff6b35;
+        }
+        
+        @media (max-width: 768px) {
+            .project-title-with-date {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        .gallery-item.banner {
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-item.social {
+            aspect-ratio: 9/16;
+        }
+
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            max-width: none;
+        }
+
+        .gallery-caption h3 {
+            font-family: var(--font-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-caption p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Details Section */
+        .details-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .project-overviews {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0 3rem 0;
+        }
+
+        .project-overview {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-overview h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-overview p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .details-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .details-content p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .process-steps li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .process-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        .process-steps li:last-child {
+            border-bottom: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .gallery-item.featured {
+                grid-column: 1;
+            }
+
+            .gallery-item.banner,
+            .gallery-item.social {
+                aspect-ratio: auto;
+            }
+
+
+            .project-overviews {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Vilma</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Commission Illustrations</h1>
+            <p>Custom illustrations created for clients from 2020-2025, showcasing diverse artistic styles and creative problem-solving through visual storytelling. From social media advertising campaigns to seasonal promotional banners, each project demonstrates versatility and client-focused design.</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Category</div>
+                    <div class="meta-value">Illustration</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Year</div>
+                    <div class="meta-value">2020-2025</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tools</div>
+                    <div class="meta-value">Digital Art, Traditional Media</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery">
+                <div class="gallery-item featured">
+                    <div class="asu-characters-grid">
+                        <img src="elina.jpg" alt="Elina - ASU Character Illustration" class="character-img">
+                        <img src="bola.jpg" alt="Bola - ASU Character Illustration" class="character-img">
+                        <img src="mark.jpg" alt="Mark - ASU Character Illustration" class="character-img">
+                    </div>
+                    <div class="gallery-caption">
+                        <h3 class="project-title-with-date">
+                            <span>ASU Endless Labs - Department Character Illustrations</span>
+                            <span class="project-date">2025</span>
+                        </h3>
+                        <p>Character illustrations created for Arizona State University's Endless Labs department social media campaign. Features three department team members (Elina, Bola, and Mark) transformed into vibrant, engaging character illustrations with bold colors and friendly personalities. These illustrations were specifically crafted to introduce the Endless Labs team and promote the department across ASU's digital platforms. <a href="https://www.linkedin.com/posts/elinaollila_meet-endless-games-and-learning-lab-at-the-activity-7305346647683698690-jaEZ?utm_source=share&utm_medium=member_desktop&rcm=ACoAACtx_EoBCH7PTaEny8m20VfwiUChYApw9tY" target="_blank" rel="noopener noreferrer" class="result-link">See the results in action</a>.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item featured">
+                    <img src="live-current-media-collage-smaller.jpeg" alt="Live Current Media - Seasonal Campaigns Collection">
+                    <div class="gallery-caption">
+                        <h3 class="project-title-with-date">
+                            <span>Live Current Media - Seasonal Campaigns</span>
+                            <span class="project-date">2022-2023</span>
+                        </h3>
+                        <p>Comprehensive collection of seasonal promotional banners and social media content created during my employment at Live Current Media (2022-2023). Features diverse holiday themes, character-driven narratives, and platform-optimized designs for various social media formats.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item featured">
+                    <img src="hiccups-clothing-brand.jpg" alt="HICCUPS Clothing Brand - Social Media Advertising">
+                    <div class="gallery-caption">
+                        <h3 class="project-title-with-date">
+                            <span>HICCUPS Clothing Brand - Social Media Advertising</span>
+                            <span class="project-date">2020</span>
+                        </h3>
+                        <p>Four-panel character illustration series for HICCUPS clothing brand's social media campaign. Vibrant cartoon aesthetic with bold colors and abstract backgrounds showcasing the brand's messaging.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="details-section">
+        <div class="container">
+            <h2>Project Overviews</h2>
+            
+            <div class="project-overviews">
+                <div class="project-overview">
+                    <h3>ASU Endless Labs (2025)</h3>
+                    <p>Character illustrations created for Arizona State University's Endless Labs department social media campaign. Features three department team members (Elina, Bola, and Mark) transformed into vibrant character illustrations to introduce the Endless Labs team and promote the department across ASU's digital platforms.</p>
+                </div>
+                
+                <div class="project-overview">
+                    <h3>Live Current Media - Seasonal Campaigns (2022-2023)</h3>
+                    <p>Comprehensive collection of seasonal promotional banners and social media content created during employment at Live Current Media (2022-2023). Features diverse holiday themes, character-driven narratives, and platform-optimized designs for various social media formats including banners, posts, and special event promotions.</p>
+                </div>
+                
+                <div class="project-overview">
+                    <h3>HICCUPS Clothing Brand (2020)</h3>
+                    <p>Four-panel character illustration series created for a startup clothing brand's social media advertising campaign. Features vibrant cartoon aesthetic with bold colors and abstract backgrounds, designed to capture attention and communicate brand messaging across social platforms.</p>
+                </div>
+            </div>
+            
+            <div class="details-grid">
+                <div class="details-content">
+                    <h3>Design Process</h3>
+                    <ul class="process-steps">
+                        <li>Client brief analysis and brand research</li>
+                        <li>Character development and style exploration</li>
+                        <li>Seasonal theme and color palette creation</li>
+                        <li>Layout design and composition planning</li>
+                        <li>Social media optimization and delivery</li>
+                    </ul>
+                </div>
+                
+                <div class="details-content">
+                    <h3>Technical Approach</h3>
+                    <p>Combined vibrant color palettes with character-driven narratives to create memorable, shareable content. Designs emphasize brand visibility through strategic text placement and consistent visual identity that works across multiple social media platforms, from horizontal banners to vertical social media posts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="project-nav-container">
+            <h3 class="project-nav-title">Explore More Projects</h3>
+            <div class="project-nav-grid">
+                <a href="index.html" class="project-nav-item home-nav">
+                    <span class="nav-item-text">Home</span>
+                </a>
+            </div>
+            <div class="project-nav-grid">
+                <a href="scaly-music-app.html" class="project-nav-item">
+                    <span class="nav-item-text">Scaly Music App</span>
+                </a>
+                <a href="mobile-app-logos.html" class="project-nav-item">
+                    <span class="nav-item-text">Mobile App Logos</span>
+                </a>
+                <a href="personal-work.html" class="project-nav-item">
+                    <span class="nav-item-text">Fashion Design</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 Vilma. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
