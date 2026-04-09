@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Project Banners</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .banner-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .banner {
+            width: 600px;
+            height: 400px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+        
+        /* Scaly Music App Banner */
+        .scaly-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .scaly-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="music" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23music)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .scaly-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .scaly-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .scaly-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+        
+        .scaly-subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 400;
+        }
+        
+        /* Commission Illustrations Banner */
+        .commission-banner {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .commission-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="brush" patternUnits="userSpaceOnUse" width="30" height="30"><path d="M5,25 Q15,15 25,25 Q35,35 45,25" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23brush)"/></svg>');
+            opacity: 0.2;
+        }
+        
+        .commission-content {
+            color: white;
+            z-index: 2;
+            position: relative;
+            flex: 1;
+        }
+        
+        .commission-title {
+            font-size: 36px;
+            font-weight: 800;
+            margin: 0 0 15px 0;
+            letter-spacing: -1px;
+        }
+        
+        .commission-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin: 0 0 20px 0;
+            font-weight: 500;
+        }
+        
+        .commission-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+        
+        .commission-visual {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+            position: relative;
+        }
+        
+        /* Personal Work Banner */
+        .personal-banner {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .personal-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="creative" patternUnits="userSpaceOnUse" width="25" height="25"><polygon points="12.5,5 20,15 12.5,25 5,15" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23creative)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .personal-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .personal-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .personal-title {
+            font-size: 34px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.5px;
+        }
+        
+        .personal-subtitle {
+            font-size: 17px;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 400;
+        }
+        
+        .save-instructions {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .save-instructions h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        
+        .save-instructions ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .save-instructions li {
+            margin: 8px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <!-- Scaly Music App Banner -->
+        <div class="banner scaly-banner" id="scaly-banner">
+            <div class="scaly-content">
+                <div class="scaly-icon">🎵</div>
+                <h2 class="scaly-title">Scaly</h2>
+                <p class="scaly-subtitle">Music Learning App</p>
+            </div>
+        </div>
+        
+        <!-- Commission Illustrations Banner -->
+        <div class="banner commission-banner" id="commission-banner">
+            <div class="commission-content">
+                <h2 class="commission-title">Commission Illustrations</h2>
+                <p class="commission-subtitle">Custom Visual Solutions</p>
+                <div class="commission-tags">
+                    <span class="tag">Brand Identity</span>
+                    <span class="tag">Social Media</span>
+                    <span class="tag">Marketing</span>
+                </div>
+            </div>
+            <div class="commission-visual">🎨</div>
+        </div>
+        
+        <!-- Personal Work Banner -->
+        <div class="banner personal-banner" id="personal-banner">
+            <div class="personal-content">
+                <div class="personal-icon">✨</div>
+                <h2 class="personal-title">Personal Work</h2>
+                <p class="personal-subtitle">Creative Explorations</p>
+            </div>
+        </div>
+        
+        <div class="save-instructions">
+            <h3>How to Save These Banners:</h3>
+            <ol>
+                <li>Right-click on each banner above</li>
+                <li>Select "Save image as..." or "Copy image"</li>
+                <li>Save as: scaly-banner.jpg, commission-banner.jpg, personal-work-banner.jpg</li>
+                <li>Place the saved images in your portfolio-website folder</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script>
+        // Function to convert canvas to image and download
+        function downloadBanner(bannerId, filename) {
+            const banner = document.getElementById(bannerId);
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = 600;
+            canvas.height = 400;
+            
+            // Create a temporary container to render the banner
+            const tempContainer = document.createElement('div');
+            tempContainer.style.position = 'absolute';
+            tempContainer.style.left = '-9999px';
+            tempContainer.style.top = '-9999px';
+            tempContainer.appendChild(banner.cloneNode(true));
+            document.body.appendChild(tempContainer);
+            
+            // Use html2canvas if available, otherwise provide instructions
+            if (typeof html2canvas !== 'undefined') {
+                html2canvas(banner).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = filename;
+                    link.href = canvas.toDataURL();
+                    link.click();
+                });
+            }
+        }
+        
+        // Add download buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const banners = ['scaly-banner', 'commission-banner', 'personal-banner'];
+            const filenames = ['scaly-banner.jpg', 'commission-banner.jpg', 'personal-work-banner.jpg'];
+            
+            banners.forEach((bannerId, index) => {
+                const banner = document.getElementById(bannerId);
+                const downloadBtn = document.createElement('button');
+                downloadBtn.textContent = `Download ${filenames[index]}`;
+                downloadBtn.style.cssText = `
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: rgba(0,0,0,0.7);
+                    color: white;
+                    border: none;
+                    padding: 8px 12px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 12px;
+                    z-index: 10;
+                `;
+                downloadBtn.onclick = () => downloadBanner(bannerId, filenames[index]);
+                banner.style.position = 'relative';
+                banner.appendChild(downloadBtn);
+            });
+        });
+    </script>
+</body>
+</html>

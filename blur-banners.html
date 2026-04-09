@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blurred Banners</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #f5f5f5; 
+            text-align: center;
+        }
+        .banner-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 30px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        .banner { 
+            width: 600px; 
+            height: 400px; 
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(8px) brightness(0.7);
+            transition: filter 0.3s ease;
+        }
+        .banner:hover img {
+            filter: blur(4px) brightness(0.8);
+        }
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .banner-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .banner-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .instructions {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .instructions h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        .instructions ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blurred Project Banners</h1>
+    
+    <div class="instructions">
+        <h3>How to Save These Banners:</h3>
+        <ol>
+            <li>Right-click on each banner below</li>
+            <li>Select "Save image as..." or "Copy image"</li>
+            <li>Save as: scaly-banner.jpg, commission-banner.jpg, personal-work-banner.jpg</li>
+            <li>Place the saved images in your portfolio-website folder</li>
+        </ol>
+    </div>
+    
+    <div class="banner-container">
+        <!-- Scaly Banner -->
+        <div class="banner">
+            <img src="scaly-main-ui.jpg" alt="Scaly Banner">
+            <div class="banner-overlay">
+                <h2 class="banner-title">Scaly</h2>
+                <p class="banner-subtitle">Music Learning App</p>
+            </div>
+        </div>
+        
+        <!-- Commission Banner -->
+        <div class="banner">
+            <img src="hiccups-clothing-brand.jpg" alt="Commission Banner">
+            <div class="banner-overlay">
+                <h2 class="banner-title">Commission Illustrations</h2>
+                <p class="banner-subtitle">Custom Visual Solutions</p>
+            </div>
+        </div>
+        
+        <!-- Personal Work Banner -->
+        <div class="banner">
+            <img src="school work.png" alt="Personal Work Banner">
+            <div class="banner-overlay">
+                <h2 class="banner-title">Personal Work</h2>
+                <p class="banner-subtitle">Creative Explorations</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

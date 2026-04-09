@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Logos - Vilma Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            background: #ffffff;
+            padding: 2rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #e55a2b;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .meta-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-top: 0.25rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-caption h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-caption p {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        /* Details Section */
+        .details-section {
+            padding: 4rem 0;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .details-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .details-content p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .process-steps li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .process-steps li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        .process-steps li:last-child {
+            border-bottom: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">Vilma</a>
+                <a href="index.html" class="back-link">← Back to Portfolio</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Mobile App Logos</h1>
+            <p>A comprehensive collection of hand-drawn mobile app logo concepts exploring diverse themes from fitness challenges to photo editing tools. Each design demonstrates creative typography, bold geometric forms, and systematic approach to brand identity development.</p>
+            
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Category</div>
+                    <div class="meta-value">Logo Design</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Year</div>
+                    <div class="meta-value">2024</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tools</div>
+                    <div class="meta-value">Hand Drawing, Digital</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="sketches-first.jpg" alt="Initial Hand-Drawn Logo Sketches">
+                    <div class="gallery-caption">
+                        <h3>Initial Sketches</h3>
+                        <p>First round of hand-drawn logo concepts exploring different themes and visual approaches</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="sketches-second.jpg" alt="Refined Hand-Drawn Logo Sketches">
+                    <div class="gallery-caption">
+                        <h3>Refined Sketches</h3>
+                        <p>Second iteration of sketches with improved concepts and systematic exploration</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="mobile-app-logos-bw.jpg" alt="Black and White Mobile App Logos Collection">
+                    <div class="gallery-caption">
+                        <h3>Monochrome Collection</h3>
+                        <p>Black and white variations demonstrating versatility and scalability</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="mobile-app-logos-color.jpg" alt="Color Mobile App Logos Collection">
+                    <div class="gallery-caption">
+                        <h3>Color Logo Collection</h3>
+                        <p>Vibrant color variations showcasing diverse app themes and branding approaches</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="details-section">
+        <div class="container">
+            <div class="details-grid">
+                <div class="details-content">
+                    <h3>Project Overview</h3>
+                    <p>This project showcases a systematic approach to mobile app logo design, beginning with hand-drawn sketches and evolving into polished digital concepts. The collection demonstrates versatility across different app categories while maintaining consistent design principles.</p>
+                    
+                    <h3>Design Process</h3>
+                    <ul class="process-steps">
+                        <li>Initial concept exploration through hand-drawn sketches</li>
+                        <li>Refinement and systematic categorization of ideas</li>
+                        <li>Digital translation with monochrome variations</li>
+                        <li>Color palette development and final execution</li>
+                    </ul>
+                </div>
+                
+                <div class="details-content">
+                    <h3>Key Features</h3>
+                    <p>Each logo in the collection demonstrates strong typography, memorable iconography, and scalable design principles. The hand-drawn foundation ensures organic, human-centered aesthetics while the digital execution provides professional polish.</p>
+                    
+                    <h3>Technical Approach</h3>
+                    <p>The project balances creative exploration with systematic methodology, ensuring each design is both visually striking and functionally appropriate for mobile app branding. The progression from sketches to final designs shows clear evolution and refinement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
